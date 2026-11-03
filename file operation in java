@@ -1,0 +1,33 @@
+import java.io.*;
+
+public class FileOperation {
+    public static void main(String[] args) {
+        try {
+            FileWriter fw = new FileWriter("sample.txt");
+            fw.write("Welcome to Java File Handling");
+            fw.close();
+
+            FileWriter fw2 = new FileWriter("sample.txt", true);
+            fw2.write("\nFile operations are easy");
+            fw2.close();
+
+            FileReader fr = new FileReader("sample.txt");
+            BufferedReader br = new BufferedReader(fr);
+
+            String line;
+            System.out.println("File Content:");
+
+            while ((line = br.readLine()) != null) {
+                System.out.println(line);
+            }
+
+            br.close();
+
+            File file = new File("sample.txt");
+            System.out.println("File Exists: " + file.exists());
+
+        } catch (IOException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+}
